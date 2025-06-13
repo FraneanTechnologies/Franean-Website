@@ -50,7 +50,7 @@
             </div>
         </div>
         <!-- Mobile menu -->
-        <div class="mobile-menu hidden md:hidden bg-white shadow-lg">
+        <div class="mobile-menu md:hidden bg-white shadow-lg overflow-hidden transition-all duration-300 ease-in-out" style="max-height: 0;">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 transition duration-150">Home</a>
                 <a href="/about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 transition duration-150">About</a>
@@ -132,9 +132,7 @@
         const mobileMenu = document.querySelector('.mobile-menu');
         
         mobileMenuButton.addEventListener('click', function() {
-            mobileMenu.classList.toggle('hidden');
-            // Add slide animation
-            if (!mobileMenu.classList.contains('hidden')) {
+            if (mobileMenu.style.maxHeight === '0px' || mobileMenu.style.maxHeight === '') {
                 mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
             } else {
                 mobileMenu.style.maxHeight = '0';
@@ -144,7 +142,6 @@
         // Close mobile menu when clicking outside
         document.addEventListener('click', function(event) {
             if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
-                mobileMenu.classList.add('hidden');
                 mobileMenu.style.maxHeight = '0';
             }
         });
@@ -152,7 +149,6 @@
         // Close mobile menu when window is resized to desktop view
         window.addEventListener('resize', function() {
             if (window.innerWidth >= 768) { // md breakpoint
-                mobileMenu.classList.add('hidden');
                 mobileMenu.style.maxHeight = '0';
             }
         });
