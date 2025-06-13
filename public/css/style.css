@@ -133,16 +133,6 @@ html {
     100% { transform: rotate(360deg); }
 }
 
-/* Custom Mobile Menu */
-.mobile-menu {
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
-}
-
-.mobile-menu.active {
-    transform: translateX(0);
-}
-
 /* Custom Back to Top Button */
 .back-to-top {
     position: fixed;
