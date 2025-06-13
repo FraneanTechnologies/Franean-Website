@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node app.js",
     "build": "npx tailwindcss -i ./public/css/input.css -o ./public/css/style.css --minify",
-    "postinstall": "chmod +x node_modules/.bin/tailwindcss",
     "dev": "nodemon app.js"
   },
   "dependencies": {
