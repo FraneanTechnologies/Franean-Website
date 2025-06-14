@@ -9,6 +9,10 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/avenir" rel="stylesheet">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -22,24 +26,24 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
-<body class="bg-white">
+<body class="bg-white font-avenir">
     <!-- Navigation -->
     <nav class="bg-white shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
+            <div class="flex justify-between h-24">
                 <div class="flex items-center">
                     <a href="/" class="flex items-center space-x-2">
-                        <img src="/images/logo.png" alt="Franean Technologies Logo" class="h-12 w-auto">
-                        <span class="text-xl font-bold">Franean Technologies</span>
+                        <img src="/images/logo.png" alt="Franean Technologies Logo" class="h-16 w-auto">
+                        <span class="text-2xl font-oswald font-medium">Franean Technologies</span>
                     </a>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="/" class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-lg font-medium">Home</a>
-                    <a href="/about" class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-lg font-medium">About</a>
-                    <a href="/services" class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-lg font-medium">Services</a>
-                    <a href="/portfolio" class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-lg font-medium">Portfolio</a>
-                    <a href="/blog" class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-lg font-medium">Blog</a>
-                    <a href="/contact" class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-lg font-medium">Contact</a>
+                    <a href="/" class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-lg font-oswald">Home</a>
+                    <a href="/about" class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-lg font-oswald">About</a>
+                    <a href="/services" class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-lg font-oswald">Services</a>
+                    <a href="/portfolio" class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-lg font-oswald">Portfolio</a>
+                    <a href="/blog" class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-lg font-oswald">Blog</a>
+                    <a href="/contact" class="text-gray-600 hover:text-red-600 px-3 py-2 rounded-md text-lg font-oswald">Contact</a>
                 </div>
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
@@ -52,18 +56,18 @@
         <!-- Mobile menu -->
         <div class="mobile-menu md:hidden bg-white shadow-lg overflow-hidden transition-all duration-300 ease-in-out" style="max-height: 0;">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 transition duration-150">Home</a>
-                <a href="/about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 transition duration-150">About</a>
-                <a href="/services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 transition duration-150">Services</a>
-                <a href="/portfolio" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 transition duration-150">Portfolio</a>
-                <a href="/blog" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 transition duration-150">Blog</a>
-                <a href="/contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 transition duration-150">Contact</a>
+                <a href="/" class="block px-3 py-2 rounded-md text-base font-oswald text-gray-700 hover:text-red-600 hover:bg-gray-50 transition duration-150">Home</a>
+                <a href="/about" class="block px-3 py-2 rounded-md text-base font-oswald text-gray-700 hover:text-red-600 hover:bg-gray-50 transition duration-150">About</a>
+                <a href="/services" class="block px-3 py-2 rounded-md text-base font-oswald text-gray-700 hover:text-red-600 hover:bg-gray-50 transition duration-150">Services</a>
+                <a href="/portfolio" class="block px-3 py-2 rounded-md text-base font-oswald text-gray-700 hover:text-red-600 hover:bg-gray-50 transition duration-150">Portfolio</a>
+                <a href="/blog" class="block px-3 py-2 rounded-md text-base font-oswald text-gray-700 hover:text-red-600 hover:bg-gray-50 transition duration-150">Blog</a>
+                <a href="/contact" class="block px-3 py-2 rounded-md text-base font-oswald text-gray-700 hover:text-red-600 hover:bg-gray-50 transition duration-150">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <main class="pt-16">
+    <main class="pt-24">
         <%- body %>
     </main>
 
@@ -73,8 +77,8 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
                     <div class="flex items-center mb-6">
-                        <img src="/images/logo.png" alt="Franean Technologies Logo" class="h-16 w-auto mr-3">
-                        <span class="text-2xl font-bold">Franean Technologies</span>
+                        <img src="/images/logo.png" alt="Franean Technologies Logo" class="h-24 w-auto mr-3">
+                        <span class="text-2xl font-oswald font-medium">Franean Technologies</span>
                     </div>
                     <p class="text-gray-400">Transforming ideas into digital reality with cutting-edge web solutions.</p>
                 </div>

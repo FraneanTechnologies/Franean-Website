@@ -1,5 +1,14 @@
 /* Custom Styles */
 
+/* Font Families */
+.font-oswald {
+    font-family: 'Oswald', sans-serif;
+}
+
+.font-avenir {
+    font-family: 'Avenir', sans-serif;
+}
+
 /* Smooth Scrolling */
 html {
     scroll-behavior: smooth;
