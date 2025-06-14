@@ -3,11 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+    <title><%= title %> | Franean Technologies</title>
     <meta name="description" content="<%= description %>">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="web development, web design, e-commerce, SEO, digital solutions, Franean Technologies">
+    <meta name="author" content="Franean Technologies">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.franeantechnologies.com<%= path %>">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="<%= title %> | Franean Technologies">
+    <meta property="og:description" content="<%= description %>">
+    <meta property="og:image" content="https://www.franeantechnologies.com/images/logo.png">
+    <meta property="og:url" content="https://www.franeantechnologies.com<%= path %>">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Franean Technologies">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= title %> | Franean Technologies">
+    <meta name="twitter:description" content="<%= description %>">
+    <meta name="twitter:image" content="https://www.franeantechnologies.com/images/logo.png">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/images/logo.png">
+    <link rel="apple-touch-icon" href="/images/logo.png">
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
@@ -25,6 +46,35 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Franean Technologies",
+        "url": "https://www.franeantechnologies.com",
+        "logo": "https://www.franeantechnologies.com/images/logo.png",
+        "description": "Transforming ideas into digital reality with cutting-edge web solutions.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Tripura",
+            "addressCountry": "India"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91 8258942111",
+            "contactType": "customer service",
+            "email": "info@franean.com"
+        },
+        "sameAs": [
+            "https://www.facebook.com/franeantechnologies",
+            "https://twitter.com/franeantech",
+            "https://www.linkedin.com/company/franean-technologies",
+            "https://www.instagram.com/franeantechnologies"
+        ]
+    }
+    </script>
 </head>
 <body class="bg-white font-avenir">
     <!-- Navigation -->
@@ -33,8 +83,7 @@
             <div class="flex justify-between h-28">
                 <div class="flex items-center">
                     <a href="/" class="flex items-center space-x-3">
-                        <img src="/images/logo.png" alt="Franean Technologies Logo" class="h-21 w-auto">
-                     
+                        <img src="/images/logo.png" alt="Franean Technologies - Professional Web Development Company" class="h-21 w-auto" loading="eager">
                     </a>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
@@ -77,8 +126,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
                     <div class="flex items-center mb-8">
-                        <img src="/images/logo.png" alt="Franean Technologies Logo" class="h-21 w-auto mr-4">
-                        
+                        <img src="/images/logo.png" alt="Franean Technologies - Your Trusted Web Development Partner" class="h-21 w-auto mr-4" loading="eager">
                     </div>
                     <p class="text-gray-400">Transforming ideas into digital reality with cutting-edge web solutions.</p>
                 </div>
