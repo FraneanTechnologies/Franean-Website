@@ -7,6 +7,18 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Production settings
+if (process.env.NODE_ENV === 'production') {
+    app.set('trust proxy', 1);
+    app.use((req, res, next) => {
+        if (req.header('x-forwarded-proto') !== 'https') {
+            res.redirect(`https://${req.header('host')}${req.url}`);
+        } else {
+            next();
+        }
+    });
+}
+
 // View engine setup
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
@@ -14,7 +26,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('layout', 'layouts/main');
 
 // Middleware
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), {
+    maxAge: '1d',
+    etag: true
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -91,7 +106,25 @@ app.get('/contact', (req, res) => {
     res.render('contact', { title: 'Contact Us', description: 'Get in touch with Franean Technologies' });
 });
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).render('error', {
+        title: 'Error | Franean Technologies',
+        description: 'An error occurred',
+        error: process.env.NODE_ENV === 'production' ? {} : err
+    });
+});
+
+// 404 handler
+app.use((req, res) => {
+    res.status(404).render('404', {
+        title: 'Page Not Found | Franean Technologies',
+        description: 'The page you are looking for does not exist'
+    });
+});
+
 // Start server
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT} in ${process.env.NODE_ENV} mode`);
 }); 
