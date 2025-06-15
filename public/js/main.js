@@ -55,14 +55,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Form Validation
-const forms = document.querySelectorAll('form');
-
-forms.forEach(form => {
-    form.addEventListener('submit', async (e) => {
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         // Basic form validation
-        const requiredFields = form.querySelectorAll('[required]');
+        const requiredFields = contactForm.querySelectorAll('[required]');
         let isValid = true;
 
         requiredFields.forEach(field => {
@@ -76,14 +75,14 @@ forms.forEach(form => {
 
         if (isValid) {
             // Show loading state
-            const submitBtn = form.querySelector('button[type="submit"]');
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<div class="loading-spinner"></div>';
 
             try {
-                const formData = new FormData(form);
-                const response = await fetch(form.action, {
+                const formData = new FormData(contactForm);
+                const response = await fetch('/contact', {
                     method: 'POST',
                     body: formData
                 });
@@ -93,7 +92,7 @@ forms.forEach(form => {
                 if (data.success) {
                     // Show success message
                     alert(data.message);
-                    form.reset();
+                    contactForm.reset();
                 } else {
                     // Show error message
                     alert(data.message || 'An error occurred. Please try again.');
@@ -108,7 +107,7 @@ forms.forEach(form => {
             }
         }
     });
-});
+}
 
 // Pricing Toggle
 const pricingToggle = document.querySelector('.pricing-toggle');
