@@ -2,6 +2,7 @@ const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const bodyParser = require('body-parser');
+const transporter = require('./config/email');
 require('dotenv').config();
 
 const app = express();
@@ -194,6 +195,43 @@ app.get('/contact', (req, res) => {
         description: 'Get in touch with Franean Technologies. We\'re here to help with your web development needs and answer any questions you may have.',
         path: '/contact'
     });
+});
+
+app.post('/contact', async (req, res) => {
+    try {
+        const { name, email, phone, subject, message } = req.body;
+
+        // Email content
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: 'franeantech@gmail.com',
+            subject: `New Contact Form Submission: ${subject}`,
+            html: `
+                <h2>New Contact Form Submission</h2>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+                <p><strong>Subject:</strong> ${subject}</p>
+                <p><strong>Message:</strong></p>
+                <p>${message}</p>
+            `
+        };
+
+        // Send email
+        await transporter.sendMail(mailOptions);
+
+        // Send success response
+        res.status(200).json({ 
+            success: true, 
+            message: 'Thank you for your message. We will get back to you soon!' 
+        });
+    } catch (error) {
+        console.error('Error sending email:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Sorry, there was an error sending your message. Please try again later.' 
+        });
+    }
 });
 
 // Error handling middleware

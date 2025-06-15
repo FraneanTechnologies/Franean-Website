@@ -58,7 +58,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const forms = document.querySelectorAll('form');
 
 forms.forEach(form => {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         // Basic form validation
@@ -81,13 +81,31 @@ forms.forEach(form => {
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<div class="loading-spinner"></div>';
 
-            // Simulate form submission (replace with actual form submission)
-            setTimeout(() => {
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Show success message
+                    alert(data.message);
+                    form.reset();
+                } else {
+                    // Show error message
+                    alert(data.message || 'An error occurred. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again later.');
+            } finally {
+                // Reset button state
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalText;
-                form.reset();
-                alert('Form submitted successfully!');
-            }, 1500);
+            }
         }
     });
 });
