@@ -1,0 +1,82 @@
+<%- include('partials/header') %>
+
+<div class="error-page">
+    <div class="container">
+        <div class="error-content text-center">
+            <h1 class="error-code"><%= error.status %></h1>
+            <h2 class="error-title"><%= error.message %></h2>
+            <p class="error-description"><%= description %></p>
+            <div class="error-actions">
+                <a href="/" class="btn btn-primary">Return to Homepage</a>
+                <a href="/contact" class="btn btn-outline-primary">Contact Support</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.error-page {
+    padding: 100px 0;
+    background-color: #f8f9fa;
+}
+
+.error-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.error-code {
+    font-size: 120px;
+    font-weight: 700;
+    color: #dc3545;
+    margin-bottom: 20px;
+}
+
+.error-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #343a40;
+}
+
+.error-description {
+    font-size: 18px;
+    color: #6c757d;
+    margin-bottom: 30px;
+}
+
+.error-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.error-actions .btn {
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .error-page {
+        padding: 60px 0;
+    }
+    
+    .error-code {
+        font-size: 80px;
+    }
+    
+    .error-title {
+        font-size: 24px;
+    }
+    
+    .error-description {
+        font-size: 16px;
+    }
+    
+    .error-actions {
+        flex-direction: column;
+    }
+}
+</style>
+
+<%- include('partials/footer') %> 

@@ -6,7 +6,7 @@ const transporter = require('./config/email');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 // Production settings
 if (process.env.NODE_ENV === 'production') {
@@ -242,26 +242,32 @@ app.post('/contact', async (req, res) => {
 });
 
 // Error handling middleware
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).render('error', {
-        title: 'Error',
-        description: 'An error occurred while processing your request. Please try again later.',
+app.use((req, res, next) => {
+    res.status(404).render('error', {
+        title: 'Page Not Found',
+        description: 'The page you are looking for could not be found.',
         path: req.path,
-        error: process.env.NODE_ENV === 'production' ? {} : err
+        error: {
+            status: 404,
+            message: 'Page Not Found'
+        }
     });
 });
 
-// 404 handler
-app.use((req, res) => {
-    res.status(404).render('404', {
-        title: 'Page Not Found',
-        description: 'The page you are looking for does not exist. Please check the URL or return to our homepage.',
-        path: req.path
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(err.status || 500).render('error', {
+        title: 'Error',
+        description: 'An error occurred while processing your request. Please try again later.',
+        path: req.path,
+        error: {
+            status: err.status || 500,
+            message: err.message || 'Internal Server Error'
+        }
     });
 });
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT} in ${process.env.NODE_ENV} mode`);
+    console.log(`Server is running on port ${PORT} in ${process.env.NODE_ENV || 'development'} mode`);
 }); 
