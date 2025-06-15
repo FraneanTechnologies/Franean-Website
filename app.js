@@ -200,6 +200,13 @@ app.get('/contact', (req, res) => {
 app.post('/contact', async (req, res) => {
     try {
         const { name, email, phone, subject, message } = req.body;
+        
+        if (!name || !email || !subject || !message) {
+            return res.status(400).json({
+                success: false,
+                message: 'Please fill in all required fields'
+            });
+        }
 
         // Email content
         const mailOptions = {
